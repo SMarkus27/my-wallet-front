@@ -1,0 +1,4 @@
+@import "tailwindcss";
+.input-style {
+    @apply p-3 rounded-md bg-gray-100 dark:bg-gray-700 dark:text-white;
+}
