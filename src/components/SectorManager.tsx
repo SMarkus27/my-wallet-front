@@ -13,7 +13,10 @@ const SectorManager = () => {
     const VITE_SECTORS_URL = import.meta.env.VITE_SECTORS_URL;
 
     useEffect(() => {
-        fetch(VITE_SECTORS_URL)
+        fetch(VITE_SECTORS_URL,{
+            credentials: "include",
+
+        })
             .then(res => res.json())
             .then(data => {
                 if (data && data.data && data.data.result) {
@@ -34,6 +37,7 @@ const SectorManager = () => {
     const handleAdd = (newSector: Sector) => {
         fetch(VITE_SECTORS_URL, {
             method: "POST",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newSector)
         })
@@ -45,6 +49,7 @@ const SectorManager = () => {
 
         fetch(`${VITE_SECTORS_URL}/${updated.id}`, {
             method: "PATCH",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({percentage: updated.percentage})
         })
@@ -54,7 +59,9 @@ const SectorManager = () => {
     }
 
     const handleDelete = (id: string) => {
-        fetch(`${VITE_SECTORS_URL}/${id}`, { method: "DELETE" })
+        fetch(`${VITE_SECTORS_URL}/${id}`, {
+            credentials: "include",
+            method: "DELETE" })
             .then(() => setSectors(prev => prev.filter(sec => sec.id !== id)))
     }
     return (

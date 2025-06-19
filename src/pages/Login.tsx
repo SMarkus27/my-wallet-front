@@ -15,12 +15,12 @@ export default function Login() {
         try {
             const res = await fetch(VITE_LOGIN_URL, {
                 method: "POST",
-                credentials: "include", // send cookies
+                credentials: "include",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
             if (res.ok) {
-                navigate("/"); // redirect after login
+                navigate("/");
             } else {
                 const data = await res.json();
                 setError(data.message || "Login failed");

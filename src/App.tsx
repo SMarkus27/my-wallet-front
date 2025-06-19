@@ -15,9 +15,9 @@ function App() {
             <ThemeToggle />{
             <Routes>
                 <Route path="/" element={<Home />} />
-                {/*<Route path="/" element={<Navigate to="/login" />} />*/}
+                <Route path="/" element={<Navigate to="/login" />} />
                 <Route path="/signup" element={<Signup />} />
-                {/*<Route path="/login" element={<Login />} />*/}
+                <Route path="/login" element={<Login />} />
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/2fa" element={<TwoFactor />} />
                 <Route path="/verify" element={<Verify />} />

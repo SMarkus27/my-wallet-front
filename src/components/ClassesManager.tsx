@@ -12,7 +12,9 @@ export const ClassManager: React.FC = () => {
     const VITE_ASSETS_CLASS_URL = import.meta.env.VITE_ASSETS_CLASS_URL;
 
     useEffect(() => {
-        fetch(VITE_ASSETS_CLASS_URL)
+        fetch(VITE_ASSETS_CLASS_URL, {
+            credentials: "include"
+        })
             .then(res => res.json())
             .then(data => {
                 if (data && data.data && data.data.result) {
@@ -33,6 +35,7 @@ export const ClassManager: React.FC = () => {
 
     const addClass = (data: Omit<Class, "id">) => {
         fetch(VITE_ASSETS_CLASS_URL, {
+            credentials: "include",
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
@@ -44,6 +47,7 @@ export const ClassManager: React.FC = () => {
     const editClass = (id: number, data: Omit<Class, "id">) => {
         fetch(`${VITE_ASSETS_CLASS_URL}/${id}`, {
             method: "PATCH",
+            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({percentage: data.percentage})
         })
@@ -56,7 +60,10 @@ export const ClassManager: React.FC = () => {
     }
 
     const deleteClass = (id: number) => {
-        fetch(`${VITE_ASSETS_CLASS_URL}/${id}`, { method: "DELETE" })
+        fetch(`${VITE_ASSETS_CLASS_URL}/${id}`, {
+            credentials: "include",
+            method: "DELETE",
+        })
             .then(() => setClasses((prev) => prev.filter((cls) => cls.id !== id)))
     }
 

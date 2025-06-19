@@ -99,7 +99,10 @@ export const IdealRealChart = ({}: IdealRealChartProps) => {
         async function fetchData() {
             try {
                 const [idealRes, realRes] = await Promise.all([
-                    fetch(VITE_ASSETS_CLASS_URL)
+                    fetch(VITE_ASSETS_CLASS_URL, {
+                        credentials: "include",
+
+                    })
                         .then(res => res.json())
                         .then(data => {
                             if (data && data.data && data.data.result) {
@@ -116,7 +119,10 @@ export const IdealRealChart = ({}: IdealRealChartProps) => {
                         .catch(error => {
                             console.error("Erro ao buscar setores:", error)
                         }),
-                    fetch(VITE_ASSETS_URL)
+                    fetch(VITE_ASSETS_URL, {
+                        credentials: "include",
+
+                    })
                         .then(res => res.json())
                         .then(data => {
                             if (data && data.data && data.data.result) {
