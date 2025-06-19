@@ -95,8 +95,8 @@ const AssetsTable = () => {
                                             <TableCell>{a.ticker}</TableCell>
                                             <TableCell>{a.quantidade}</TableCell>
                                             <TableCell>R$ {a.preco}</TableCell>
-                                            <TableCell>R$ {a.saldo}</TableCell>
-                                            <TableCell>{a.percentual}%</TableCell>
+                                            <TableCell>R$ {a.saldo.toFixed(2)}</TableCell>
+                                            <TableCell>{a.percentual.toFixed(2)}%</TableCell>
                                             <TableCell className="flex gap-2">
                                                 <Button size="sm" variant="outline" onClick={() => handleEdit(a)}>
                                                     <PencilIcon className="w-4 h-4" />
