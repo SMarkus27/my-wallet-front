@@ -27,11 +27,18 @@ export const RebalanceTable = () => {
     const [rebalanceData, setRebalanceData] = useState<RebalanceItem[]>([])
 
     const handleRebalance = async () => {
-        if (!classe || !valor) return toast.warning("Preencha todos os campos")
+        if (!valor) return toast.warning("Preencha todos os campos")
         const VITE_REBALANCE_URL = import.meta.env.VITE_REBALANCE_URL;
+        let params = ""
+        if (!classe) {
+            params = `?amount=${valor}`
+        } else {
+            params = `?amount=${valor}&asset_type=${classe}`
+        }
 
+        console.log(classe)
         try {
-            const res = await fetch(`${VITE_REBALANCE_URL}?amount=${valor}&asset_type=${classe}`, {
+            const res = await fetch(`${VITE_REBALANCE_URL}${params}`, {
                 credentials: "include",
             })
 
